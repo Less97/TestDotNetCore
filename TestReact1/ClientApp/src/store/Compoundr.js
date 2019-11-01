@@ -18,10 +18,9 @@ export const reducer = (state, action) => {
     switch (action.type) {
         case OPERATION_COMPOUND:
            
-          
             return { ...state, compoundrd: 100 };
+
         case OPERATION_UPDATE:
-            console.log('UPDATE a:' + action.a + ' b:' + action.b);
             return { ...state, a: action.a, b: action.b }
 
         default: 
