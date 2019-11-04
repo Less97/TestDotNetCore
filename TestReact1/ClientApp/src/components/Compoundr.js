@@ -5,8 +5,10 @@ import { actionCreators } from '../store/Compoundr';
 
 class Compoundr extends Component {
 
-    handleChange(initialAmount, interest,frequency,years) {
-        this.props.updateForm(initialAmount, interest, years);
+    currentFrequency = 'monthly';
+
+    handleChange(initialAmount, interest, frequency, years) {
+        this.props.updateForm(initialAmount, interest, frequency, years);
     }
 
     compound(event) {
@@ -14,26 +16,31 @@ class Compoundr extends Component {
         this.props.compound();
     }
 
+    dropdownlistChange(value) {
+        this.currentFrequency = value;
+        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years);
+    }
+
     render() {
         return (
             <div>
             <form>
                 <div className="form-group">
-                    <label htmlFor="initialAmount">Initial amount:</label>
-                    <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.props.years)} />
+                        <label htmlFor="initialAmount">Initial amount:</label>
+                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="years">Years:</label>
-                    <input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.years, event.target.value)} />
+                        <label htmlFor="years">Years:</label>
+                        <input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.years, this.currentFrequency, event.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="interest">Interest:</label>
-                    <input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.props.years)} />
+                        <label htmlFor="interest">Interest:</label>
+                        <input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years)} />
                     </div>
                     <div>
                         <label htmlFor="frequency">Compounding periods</label>
-                        <select name="frequency" onChange={() => this.dropdownlistChange}>
-                            <option value="monthly">Monthly</option>
+                        <select name="frequency" onChange={(event) => this.dropdownlistChange(event.target.value)}>
+                            <option value="monthly" selected="true">Monthly</option>
                             <option value="yearly">Yearly</option>
                         </select>    
                     </div>
