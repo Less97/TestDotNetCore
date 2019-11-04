@@ -7,8 +7,8 @@ class Compoundr extends Component {
 
     currentFrequency = 'monthly';
 
-    handleChange(initialAmount, interest, frequency, years) {
-        this.props.updateForm(initialAmount, interest, frequency, years);
+    handleChange(initialAmount, interest, frequency, years, add) {
+        this.props.updateForm(initialAmount, interest, frequency, years, add);
     }
 
     compound(event) {
@@ -23,19 +23,19 @@ class Compoundr extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
             <form>
                 <div className="form-group">
                         <label htmlFor="initialAmount">Initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years)} />
+                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add)} />
                 </div>
                 <div className="form-group">
                         <label htmlFor="years">Years:</label>
-                        <input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.years, this.currentFrequency, event.target.value)} />
+                        <input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value,this.props.add)} />
                 </div>
                 <div className="form-group">
                         <label htmlFor="interest">Interest:</label>
-                        <input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years)} />
+                        <input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years,this.props.add)} />
                     </div>
                     <div>
                         <label htmlFor="frequency">Compounding periods</label>
@@ -45,8 +45,8 @@ class Compoundr extends Component {
                         </select>    
                     </div>
                 <div className="form-group">
-                    <label htmlFor="interest">added monthly:</label>
-                    <input name="monthlyAdd" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.props.years)} />
+                        <label htmlFor="interest">added monthly:</label>
+                        <input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value)} />
                 </div>
                 <button className="btn btn-primary" onClick={event=>this.compound(event)}>COMPOUND</button>
                 </form>
