@@ -5,7 +5,7 @@ const initialState = {
     initialAmount: 0,
     interest:0,
     years: 0,
-    frequency:'yearly',
+    frequency:'monthly',
     add:0,
     endAmount: 0
 };
@@ -33,7 +33,12 @@ export const reducer = (state, action) => {
 
 function calculateCompoundInterest(initialAmount, years, frequency, interest, add) {
     debugger;
-    initialAmount = parseInt(initialAmount, 10); years = parseInt(years, 10); interest = (parseInt(interest, 10)) / 100;
-  
-    return endAmount;
+    initialAmount = parseInt(initialAmount, 10);
+    years = parseInt(years, 10);
+    interest = (parseInt(interest, 10)) / 100;
+    //
+    var interestOnAmount = initialAmount * Math.pow((1 + interest), years);
+    //var interestOnDeposit = 
+    //PMT × {[(1 + r/n)(nt) - 1] / (r/n)} × (1+r/n)
+    return interestOnAmount.toFixed(2);
 }
