@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Compoundr';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class Compoundr extends Component {
 
@@ -23,33 +24,33 @@ class Compoundr extends Component {
 
     render() {
         return (
-            <div className="A">
-            <form>
-                <div className="form-group">
-                        <label htmlFor="initialAmount">Initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add)} />
-                </div>
-                <div className="form-group">
-                        <label htmlFor="years">Years:</label>
-                        <input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value,this.props.add)} />
-                </div>
-                <div className="form-group">
-                        <label htmlFor="interest">Interest:</label>
-                        <input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years,this.props.add)} />
-                    </div>
-                    <div>
-                        <label htmlFor="frequency">Compounding periods</label>
-                        <select name="frequency" onChange={(event) => this.dropdownlistChange(event.target.value)}>
+            <div>
+            <Form>
+                <FormGroup>
+                        <Label htmlFor="initialAmount">Initial amount:</Label>
+                        <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add)} />
+                </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="years">Years:</Label>
+                        <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value,this.props.add)} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="interest">Interest:</Label>
+                        <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years,this.props.add)} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label htmlFor="frequency">Compounding periods</Label>
+                        <Input type="select" name="frequency" onChange={(event) => this.dropdownlistChange(event.target.value)}>
                             <option value="monthly" selected="true">Monthly</option>
                             <option value="yearly">Yearly</option>
-                        </select>    
-                    </div>
-                <div className="form-group">
-                        <label htmlFor="interest">added monthly:</label>
-                        <input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value)} />
-                </div>
-                <button className="btn btn-primary" onClick={event=>this.compound(event)}>COMPOUND</button>
-                </form>
+                        </Input>    
+                    </FormGroup>
+                    <FormGroup className="form-group">
+                        <Label htmlFor="interest">added monthly:</Label>
+                        <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value)} />
+                    </FormGroup>
+                    <Button color="primary" onClick={event => this.compound(event)}>COMPOUND</Button>
+                </Form>
                 <div>{this.renderResult()}</div>
                 </div>
     );

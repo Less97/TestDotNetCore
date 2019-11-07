@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/CagrCalculator';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export class CagrCalculator extends Component {
 
@@ -17,21 +18,21 @@ export class CagrCalculator extends Component {
     render() {
         return (
             <div className="container">
-            <form>
-                    <div className="form-group">
-                        <label htmlFor="initialAmount">initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleUpdate(event.target.value, this.props.endAmount, this.props.years)} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="initialAmount">End Amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.endAmount} onChange={(event) => this.handleUpdate(this.props.initialAmount, event.target.value, this.props.years)} />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="initialAmount">Years:</label>
-                        <input name="initialAmount" type="text" value={this.props.years} onChange={(event) => this.handleUpdate(this.props.initialAmount, this.props.endAmount, event.target.value)} />
-                    </div>
-                    <button className="btn btn-primary" onClick={event => this.handleCalculate(event)}>Calculate</button>
-                </form>
+                <Form>
+                    <FormGroup>
+                        <Label htmlFor="initialAmount">Initial amount:</Label>
+                        <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleUpdate(event.target.value, this.props.endAmount, this.props.years)} />
+                    </FormGroup>
+                    <FormGroup className="form-group">
+                        <Label htmlFor="initialAmount">End Amount:</Label>
+                        <Input name="initialAmount" type="text" value={this.props.endAmount} onChange={(event) => this.handleUpdate(this.props.initialAmount, event.target.value, this.props.years)} />
+                    </FormGroup>
+                    <FormGroup className="form-group">
+                        <Label htmlFor="initialAmount">Years:</Label>
+                        <Input name="initialAmount" type="text" value={this.props.years} onChange={(event) => this.handleUpdate(this.props.initialAmount, this.props.endAmount, event.target.value)} />
+                    </FormGroup>
+                    <Button color="primary" onClick={event => this.handleCalculate(event)}>Calculate</Button>
+                </Form>
                 <div>EndAmount:{this.props.CAGR} %</div>
         </div>)
     }
