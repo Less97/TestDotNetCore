@@ -18,7 +18,7 @@ class Compoundr extends Component {
 
     dropdownlistChange(value) {
         this.currentFrequency = value;
-        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years);
+        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years,this.props.add);
     }
 
     render() {
