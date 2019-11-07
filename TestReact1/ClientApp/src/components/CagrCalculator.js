@@ -10,7 +10,8 @@ export class CagrCalculator extends Component {
     }
 
     handleCalculate(event) {
-        event.preventDefault()
+        event.preventDefault();
+        this.props.calculate();
     }
 
     render() {
@@ -19,19 +20,19 @@ export class CagrCalculator extends Component {
             <form>
                     <div className="form-group">
                         <label htmlFor="initialAmount">initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.endAmount, this.props.years)} />
+                        <input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleUpdate(event.target.value, this.props.endAmount, this.props.years)} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="initialAmount">Initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.endAmount} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.props.years)} />
+                        <label htmlFor="initialAmount">End Amount:</label>
+                        <input name="initialAmount" type="text" value={this.props.endAmount} onChange={(event) => this.handleUpdate(this.props.initialAmount, event.target.value, this.props.years)} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="initialAmount">Initial amount:</label>
-                        <input name="initialAmount" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.endAmount, event.target.value)} />
+                        <label htmlFor="initialAmount">Years:</label>
+                        <input name="initialAmount" type="text" value={this.props.years} onChange={(event) => this.handleUpdate(this.props.initialAmount, this.props.endAmount, event.target.value)} />
                     </div>
-
                     <button className="btn btn-primary" onClick={event => this.handleCalculate(event)}>Calculate</button>
-            </form>
+                </form>
+                <div>EndAmount:{this.props.CAGR} %</div>
         </div>)
     }
 }

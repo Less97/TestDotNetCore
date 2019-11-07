@@ -12,19 +12,27 @@ const initialState = {
 export const actionCreators = {
     updateForm: (initialAmount, endAmount, years) => ({ type: OPERATION_UPDATE, initialAmount, endAmount, years }),
     calculate: () => ({ type: OPERATION_CALCULATE })
-    
 };
 
 export const reducer = (state, action) => {
   state = state || initialState;
 
     if (action.type === OPERATION_UPDATE) {
-    return { ...state, count: state.count + 1 };
+        console.dir(action);
+        return { ...state, initialAmount: action.initialAmount, endAmount: action.endAmount, years: action.years };
   }
 
     if (action.type === OPERATION_CALCULATE) {
-    return { ...state, CAGR: 1000 };
+        return { ...state, CAGR: calculateCAGR(state.initialAmount, state.endAmount,state.years) };
   }
 
   return state;
 };
+
+
+function calculateCAGR(startAmount, endAmount, years) {
+    var cagr = (Math.pow((endAmount / startAmount), 1 / years) - 1) * 100;
+    return cagr.toFixed(2);
+
+
+}
