@@ -23,7 +23,7 @@ class Compoundr extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div className="A">
             <form>
                 <div className="form-group">
                         <label htmlFor="initialAmount">Initial amount:</label>
@@ -51,7 +51,7 @@ class Compoundr extends Component {
                 <button className="btn btn-primary" onClick={event=>this.compound(event)}>COMPOUND</button>
                 </form>
                 <div>{this.renderResult()}</div>
-            </div>
+                </div>
     );
     }
 
@@ -65,6 +65,6 @@ class Compoundr extends Component {
 }
 
 export default connect(
-  state => state.SecondPage,
+    state => state.Compoundr,
     dispatch => bindActionCreators(actionCreators, dispatch)
 )(Compoundr);
