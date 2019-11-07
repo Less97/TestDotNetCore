@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/Compoundr';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
+import "./Compoundr.css";
 
 class Compoundr extends Component {
 
@@ -35,7 +36,7 @@ class Compoundr extends Component {
                         <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value,this.props.add)} />
                     </FormGroup>
                     <FormGroup>
-                        <Label htmlFor="interest">Interest:</Label>
+                        <Label htmlFor="interest">Interest (%):</Label>
                         <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years,this.props.add)} />
                     </FormGroup>
                     <FormGroup>
@@ -58,8 +59,13 @@ class Compoundr extends Component {
 
     renderResult() {
         return (
-            <div>
-                {this.props.endAmount}
+            <div className="margin-top-1em">
+                <Jumbotron fluid>
+                    <Container fluid>
+                        <h1 className="display-3">{this.props.endAmount}</h1>
+                        <p className="lead">this is the amount you will have after the compounding time.</p>
+                    </Container>
+                </Jumbotron>
             </div>)
 
     }

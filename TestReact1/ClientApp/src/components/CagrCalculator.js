@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../store/CagrCalculator';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
 
 export class CagrCalculator extends Component {
 
@@ -33,9 +33,21 @@ export class CagrCalculator extends Component {
                     </FormGroup>
                     <Button color="primary" onClick={event => this.handleCalculate(event)}>Calculate</Button>
                 </Form>
-                <div>EndAmount:{this.props.CAGR} %</div>
+                <div>{this.renderResult()}</div>
         </div>)
     }
+
+    renderResult() {
+        return (<div className="margin-top-1em">
+                    <Jumbotron fluid>
+                        <Container fluid>
+                    <h1 className="display-3">{this.props.CAGR} %</h1>
+                    <p className="lead">This has been the Compounded annual return in {this.props.years} years.</p>
+                        </Container>
+                    </Jumbotron>
+        </div>)
+    }
+
 }
 
 export default connect(
