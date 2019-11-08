@@ -41,8 +41,8 @@ class Compoundr extends Component {
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor="frequency">Compounding periods</Label>
-                        <Input type="select" name="frequency" onChange={(event) => this.dropdownlistChange(event.target.value)}>
-                            <option value="monthly" selected="true">Monthly</option>
+                        <Input type="select" defaultValue="monthly" name="frequency" onChange={(event) => this.dropdownlistChange(event.target.value)}>
+                            <option value="monthly">Monthly</option>
                             <option value="yearly">Yearly</option>
                         </Input>    
                     </FormGroup>
