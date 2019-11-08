@@ -7,8 +7,8 @@ import "./WithdrawalCalculator.css";
 
 class WithdrawalCalculator extends Component {
 
-    handleChange(initialAmount, interest, frequency, years, add, percentageWithdrawal) {
-        this.props.updateForm(initialAmount, interest, frequency, years, add, percentageWithdrawal);
+    handleChange(initialAmount, interest, frequency, years, add, percentageWithdrawal,taxRate) {
+        this.props.updateForm(initialAmount, interest, frequency, years, add, percentageWithdrawal,taxRate);
     }
 
     compound(event) {
@@ -18,7 +18,7 @@ class WithdrawalCalculator extends Component {
 
     dropdownlistChange(value) {
         this.currentFrequency = value;
-        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal);
+        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal,this.props.taxRate);
     }
 
     render() {
@@ -26,15 +26,15 @@ class WithdrawalCalculator extends Component {
             <Form>
                 <FormGroup>
                     <Label htmlFor="initialAmount">Initial amount:</Label>
-                    <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal)} />
+                    <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="years">Years:</Label>
-                    <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value, this.props.add, this.props.percentage_withdrawal)} />
+                    <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value, this.props.add, this.props.percentage_withdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="interest">Interest (%):</Label>
-                    <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal)} />
+                    <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal,this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="frequency">Compounding periods</Label>
@@ -44,12 +44,16 @@ class WithdrawalCalculator extends Component {
                     </Input>
                 </FormGroup>
                 <FormGroup className="form-group">
-                    <Label htmlFor="interest">Added monthly:</Label>
-                    <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value, this.props.percentage_withdrawal)} />
+                    <Label htmlFor="monthlyAdd">Added monthly:</Label>
+                    <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value, this.props.percentage_withdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup className="form-group">
-                    <Label htmlFor="interest">Percentage Withdrawal:</Label>
-                    <Input name="monthlyAdd" type="text" value={this.props.percentage_withdrawal} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, event.target.value)} />
+                    <Label htmlFor="withdrawal">Percentage Withdrawal:</Label>
+                    <Input name="withdrawal" type="text" value={this.props.percentage_withdrawal} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, event.target.value, this.props.taxRate)} />
+                </FormGroup>
+                <FormGroup className="form-group">
+                    <Label htmlFor="taxRate">TaxRate:</Label>
+                    <Input name="taxRate" type="text" value={this.props.taxRate} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentage_withdrawal,event.target.value)} />
                 </FormGroup>
                 <Button color="primary" onClick={event => this.compound(event)}>COMPOUND</Button>
             </Form>
@@ -88,10 +92,12 @@ class WithdrawalCalculator extends Component {
                 </thead>
                 <tbody>
                     {amountTable.map(
-                        (idx,itm) => {
+                        (itm,idx) => {
                             return (<tr>
                                 <th scope="row">{idx}</th>
-                                <td>{itm}</td>
+                                <td>{itm.amount}</td>
+                                <td>{itm.percentageWithdrawAnnual}</td>
+                                <td>{itm.percentageWithdrawMonthly}</td>
                             </tr>)
                         })}
                 </tbody>
