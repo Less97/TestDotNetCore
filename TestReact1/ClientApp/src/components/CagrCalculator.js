@@ -17,7 +17,7 @@ export class CagrCalculator extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <Form>
                     <FormGroup>
                         <Label htmlFor="initialAmount">Initial amount:</Label>

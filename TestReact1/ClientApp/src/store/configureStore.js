@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import * as CAGRCalculator from './CagrCalculator';
 import * as Compoundr from './Compoundr';
+import * as WithdrawalCalculator from './WithdrawalCalculator';
 
 export default function configureStore (history, initialState) {
   const reducers = {
       CAGRCalculator: CAGRCalculator.reducer,
-      Compoundr: Compoundr.reducer
+      Compoundr: Compoundr.reducer,
+      WithdrawalCalculator: WithdrawalCalculator.reducer
   };
 
   const middleware = [

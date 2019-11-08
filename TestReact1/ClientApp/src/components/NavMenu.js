@@ -30,10 +30,13 @@ export default class NavMenu extends React.Component {
                   <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink tag={Link} className="text-dark" to="/cagrInterest">CAGR</NavLink>
+                    <NavLink tag={Link} className="text-dark" to="/cagr-calculator">CAGR</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/Compoundr">Compound Interest</NavLink>
+                  <NavLink tag={Link} className="text-dark" to="/Compound-interest-calculator">Compound Interest</NavLink>
+                </NavItem>
+                <NavItem>
+                    <NavLink tag={Link} className="text-dark" to="/withdrawal-calculator">Withdrawal Calculator</NavLink>
                 </NavItem>
               </ul>
             </Collapse>

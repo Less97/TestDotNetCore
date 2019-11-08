@@ -7,8 +7,9 @@ const Home = props => (
     <h1>Welcome in Compoundr</h1>
         <p>We're trying to provide you with the right financial tools, that simplify how you calculate:</p>
         <ul>
-            <li><NavLink href="/compoundr">Calculate the Compound Interest</NavLink></li>
-            <li><NavLink href="/cagrInterest">Calculate CAGR</NavLink></li>
+            <li><NavLink href="/Compound-interest-calculator">Calculate the Compound Interest</NavLink></li>
+            <li><NavLink href="/cagr-calculator">Calculate CAGR</NavLink></li>
+            <li><NavLink href="/withdrawal-calculator">Calculate percentage Withdrawal</NavLink></li>
         </ul>
   </div>
 );

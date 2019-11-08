@@ -47,7 +47,7 @@ class Compoundr extends Component {
                         </Input>    
                     </FormGroup>
                     <FormGroup className="form-group">
-                        <Label htmlFor="interest">added monthly:</Label>
+                        <Label htmlFor="interest">Added monthly:</Label>
                         <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value)} />
                     </FormGroup>
                     <Button color="primary" onClick={event => this.compound(event)}>COMPOUND</Button>
