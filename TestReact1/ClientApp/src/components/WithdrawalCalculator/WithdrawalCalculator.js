@@ -17,8 +17,7 @@ class WithdrawalCalculator extends Component {
     }
 
     dropdownlistChange(value) {
-        this.currentFrequency = value;
-        this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentageWithdrawal,this.props.taxRate);
+        this.handleChange(this.props.initialAmount, this.props.interest, value, this.props.years, this.props.add, this.props.percentageWithdrawal,this.props.taxRate);
     }
 
     render() {
@@ -26,15 +25,15 @@ class WithdrawalCalculator extends Component {
             <Form>
                 <FormGroup>
                     <Label htmlFor="initialAmount">Initial amount:</Label>
-                    <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentageWithdrawal, this.props.taxRate)} />
+                    <Input name="initialAmount" type="text" value={this.props.initialAmount} onChange={(event) => this.handleChange(event.target.value, this.props.interest, this.props.frequency, this.props.years, this.props.add, this.props.percentageWithdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="years">Years:</Label>
-                    <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, event.target.value, this.props.add, this.props.percentageWithdrawal, this.props.taxRate)} />
+                    <Input name="years" type="text" value={this.props.years} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.props.frequency, event.target.value, this.props.add, this.props.percentageWithdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="interest">Interest (%):</Label>
-                    <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.currentFrequency, this.props.years, this.props.add, this.props.percentageWithdrawal,this.props.taxRate)} />
+                    <Input name="interest" type="text" value={this.props.interest} onChange={(event) => this.handleChange(this.props.initialAmount, event.target.value, this.props.frequency, this.props.years, this.props.add, this.props.percentageWithdrawal,this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup>
                     <Label htmlFor="frequency">Compounding periods</Label>
@@ -45,15 +44,15 @@ class WithdrawalCalculator extends Component {
                 </FormGroup>
                 <FormGroup className="form-group">
                     <Label htmlFor="monthlyAdd">Added monthly:</Label>
-                    <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, event.target.value, this.props.percentageWithdrawal, this.props.taxRate)} />
+                    <Input name="monthlyAdd" type="text" value={this.props.add} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.props.frequency, this.props.years, event.target.value, this.props.percentageWithdrawal, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup className="form-group">
                     <Label htmlFor="withdrawal">Percentage Withdrawal:</Label>
-                    <Input name="withdrawal" type="text" value={this.props.percentageWithdrawal} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, event.target.value, this.props.taxRate)} />
+                    <Input name="withdrawal" type="text" value={this.props.percentageWithdrawal} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.props.frequency, this.props.years, this.props.add, event.target.value, this.props.taxRate)} />
                 </FormGroup>
                 <FormGroup className="form-group">
                     <Label htmlFor="taxRate">TaxRate:</Label>
-                    <Input name="taxRate" type="text" value={this.props.taxRate} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.currentFrequency, this.props.years, this.props.add, this.props.percentageWithdrawal,event.target.value)} />
+                    <Input name="taxRate" type="text" value={this.props.taxRate} onChange={(event) => this.handleChange(this.props.initialAmount, this.props.interest, this.props.frequency, this.props.years, this.props.add, this.props.percentageWithdrawal,event.target.value)} />
                 </FormGroup>
                 <Button color="primary" onClick={event => this.compound(event)}>COMPOUND</Button>
             </Form>
