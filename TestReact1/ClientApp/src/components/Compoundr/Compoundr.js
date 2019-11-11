@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../store/Compoundr';
+import { actionCreators } from '../../store/Compoundr';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
 import "./Compoundr.css";
 

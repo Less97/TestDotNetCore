@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { actionCreators } from '../store/CagrCalculator';
+import { actionCreators } from '../../store/CagrCalculator';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
 
 export class CagrCalculator extends Component {

@@ -16,8 +16,7 @@ const initialState = {
 
 export const actionCreators = {
     compound: () => ({ type: OPERATION_CALCULATE }),
-    updateForm: (initialamount, interest, frequency, years, add, percentageWithdrawal,taxRate) => ({ type: OPERATION_UPDATE, initialamount, interest, frequency, years, add, percentageWithdrawal,taxRate })
-    
+    updateForm: (initialamount, interest, frequency, years, add, percentageWithdrawal, taxRate) => ({ type: OPERATION_UPDATE, initialamount, interest, frequency, years, add, percentageWithdrawal, taxRate })
 };
 
 export const reducer = (state, action) => {
@@ -38,6 +37,7 @@ export const reducer = (state, action) => {
 };
 
 function calculateTable(state) {
+    debugger;
     var interest = parseFloat(state.interest / 100);
     var amount = parseInt(state.initialAmount, 10);
     var adding = state.frequency === 'monthly' ? state.add * 12 : state.add;

@@ -2,9 +2,9 @@ import React from 'react';
 import { Route } from 'react-router';
 import Layout from './components/Layout';
 import Home from './components/Home';
-import CagrCalculator from './components/CagrCalculator';
-import Compoundr from './components/Compoundr';
-import WithdrawalCalculator from './components/WithdrawalCalculator'
+import CagrCalculator from './components/CagrCalculator/CagrCalculator';
+import Compoundr from './components/Compoundr/Compoundr';
+import WithdrawalCalculator from './components/WithdrawalCalculator/WithdrawalCalculator'
 
 export default () => (
   <Layout>
