@@ -5,10 +5,15 @@ import { actionCreators } from '../../store/Compoundr';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
 import MoneyHelper from '../../helpers/MoneyHelper';
 import "./Compoundr.css";
+import { LineChart, Line } from 'recharts';
+
+
+
 
 
 class Compoundr extends Component {
 
+   
     handleChange(initialAmount, interest, frequency, years, add) {
         this.props.updateForm(initialAmount, interest, frequency, years, add);
     }
@@ -52,6 +57,7 @@ class Compoundr extends Component {
                     <Button color="primary" onClick={event => this.compound(event)}>COMPOUND</Button>
                 </Form>
                 <div>{this.renderResult()}</div>
+                <div>{this.renderLineChart()}</div>
                 </div>
     );
     }

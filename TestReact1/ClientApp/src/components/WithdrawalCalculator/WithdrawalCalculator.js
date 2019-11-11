@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../../store/WithdrawalCalculator';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container, Table } from 'reactstrap';
 import MoneyHelper from '../../helpers/MoneyHelper';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
 import "./WithdrawalCalculator.css";
 
 class WithdrawalCalculator extends Component {
@@ -61,6 +62,9 @@ class WithdrawalCalculator extends Component {
             <div className={!this.props.calculated ? 'hidden':''}>
                 {this.renderTable(this.props.yearlyAmounts)}
             </div>
+            <div className={!this.props.calculated ? 'hidden' : ''}>
+                {this.renderGraph()}
+            </div>
         </div>)
     }
 
@@ -102,6 +106,24 @@ class WithdrawalCalculator extends Component {
                 </tbody>
             </Table>)
     }
+
+    renderGraph() {
+        debugger;
+        var data = this.props.yearlyAmounts.map(function (itm, idx) { return { Y: 'Year ' + idx, amount: itm.amount, amountText: MoneyHelper.convertMoneyToString(itm.amount) } });
+        if (!this.props.calculated)
+            return (<div></div>)
+        else
+            return (
+                <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+                <Line type="monotone" dataKey="amount" label="amountText" stroke="#8884d8" />
+                    <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                    <XAxis dataKey="Y" label="" />
+                <YAxis />
+                <Tooltip data = "amountText" />
+            </LineChart>)
+
+    }
+
 
 }
 
