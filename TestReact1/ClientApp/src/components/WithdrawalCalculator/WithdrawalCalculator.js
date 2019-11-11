@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store/WithdrawalCalculator';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container, Table } from 'reactstrap';
+import MoneyHelper from '../../helpers/MoneyHelper';
 import "./WithdrawalCalculator.css";
 
 class WithdrawalCalculator extends Component {
@@ -69,7 +70,7 @@ class WithdrawalCalculator extends Component {
             <div className="margin-top-1em">
                 <Jumbotron fluid>
                     <Container fluid>
-                        <h1 className="display-3">{this.props.endAmount}</h1>
+                        <h1 className="display-3">{MoneyHelper.convertMoneyToString(this.props.endAmount)}</h1>
                         <p className="lead">this is the amount you will have after the compounding time.</p>
                     </Container>
                 </Jumbotron>
@@ -93,9 +94,9 @@ class WithdrawalCalculator extends Component {
                         (itm,idx) => {
                             return (<tr>
                                 <th scope="row">{idx}</th>
-                                <td>{itm.amount}</td>
-                                <td>{itm.percentageWithdrawAnnual}</td>
-                                <td>{itm.percentageWithdrawMonthly}</td>
+                                <td>{MoneyHelper.convertMoneyToString(itm.amount)}</td>
+                                <td>{MoneyHelper.convertMoneyToString(itm.percentageWithdrawAnnual)}</td>
+                                <td>{MoneyHelper.convertMoneyToString(itm.percentageWithdrawMonthly)}</td>
                             </tr>)
                         })}
                 </tbody>

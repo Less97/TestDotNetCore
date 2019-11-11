@@ -37,7 +37,6 @@ export const reducer = (state, action) => {
 };
 
 function calculateTable(state) {
-    debugger;
     var interest = parseFloat(state.interest / 100);
     var amount = parseInt(state.initialAmount, 10);
     var adding = state.frequency === 'monthly' ? state.add * 12 : state.add;

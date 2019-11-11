@@ -3,7 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { actionCreators } from '../../store/Compoundr';
 import { Button, Form, FormGroup, Label, Input, Jumbotron, Container } from 'reactstrap';
+import MoneyHelper from '../../helpers/MoneyHelper';
 import "./Compoundr.css";
+
 
 class Compoundr extends Component {
 
@@ -59,7 +61,7 @@ class Compoundr extends Component {
             <div className="margin-top-1em">
                 <Jumbotron fluid>
                     <Container fluid>
-                        <h1 className="display-3">{this.props.endAmount}</h1>
+                        <h1 className="display-3">{MoneyHelper.convertMoneyToString(this.props.endAmount)}</h1>
                         <p className="lead">this is the amount you will have after the compounding time.</p>
                     </Container>
                 </Jumbotron>
